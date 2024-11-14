@@ -1,4 +1,3 @@
-// src/utils/api.js
 import axios from "axios";
 import md5 from "blueimp-md5";
 
@@ -24,9 +23,6 @@ export const getLatestComics = async () => {
         orderBy: "-modified",
       },
     });
-
-    // Imprime los datos para ver su estructura
-    console.log('Comics Data:', response.data);
     
     return response.data.data.results;
   } catch (error) {

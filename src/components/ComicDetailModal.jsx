@@ -1,11 +1,29 @@
-// src/components/ComicDetailModal.jsx
 import React from "react";
 import "./Modal.css";
 
-function ComicDetailModal({ comic, characters = [], onClose }) {
+function ComicDetailModal(props) {
+  console.log("Propiedades recibidas en ComicDetailModal:", props);
+
+  const {
+    comic,
+    characters = [],
+    onClose,
+    addToFavoritesFunc,
+    removeFromFavoritesFunc,
+    isFavoriteFlag,
+  } = props;
+
   const handleOverlayClick = (e) => {
     if (e.target.className === "modal-overlay active") {
       onClose();
+    }
+  };
+
+  const handleFavoriteClick = () => {
+    if (isFavoriteFlag) {
+      removeFromFavoritesFunc(comic.id);
+    } else {
+      addToFavoritesFunc(comic);
     }
   };
 
@@ -43,6 +61,9 @@ function ComicDetailModal({ comic, characters = [], onClose }) {
           ) : (
             <p>No hay personajes disponibles</p>
           )}
+          <button onClick={handleFavoriteClick} className="favorite-button">
+            {isFavoriteFlag ? "Eliminar de Favoritos" : "Añadir a Favoritos"}
+          </button>
         </div>
       </div>
     </div>

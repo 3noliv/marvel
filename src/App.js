@@ -11,23 +11,31 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filterFavorites, setFilterFavorites] = useState(false);
 
+  // Cargar favoritos del localStorage
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
     setFavorites(savedFavorites);
   }, []);
 
+  // Guardar favoritos en localStorage
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  const addFavorite = (comic) => {
-    setFavorites((prevFavorites) => [...prevFavorites, comic]);
+  const addToFavorites = (comic) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = [...prevFavorites, comic];
+      localStorage.setItem("favorites", JSON.stringify(newFavorites)); // Actualizar localStorage
+      return newFavorites;
+    });
   };
 
-  const removeFavorite = (comicId) => {
-    setFavorites((prevFavorites) =>
-      prevFavorites.filter((fav) => fav.id !== comicId)
-    );
+  const removeFromFavorites = (comicId) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = prevFavorites.filter((fav) => fav.id !== comicId);
+      localStorage.setItem("favorites", JSON.stringify(newFavorites)); // Actualizar localStorage
+      return newFavorites;
+    });
   };
 
   const isFavorite = (comicId) => {
@@ -45,14 +53,13 @@ function App() {
   const openModal = async (comic) => {
     const characterData = await getComicCharacters(comic.id);
 
-    // Filtramos para asegurarnos de que solo personajes con imagen sean incluidos
     const filteredCharacters = characterData.filter(
       (character) => character.thumbnail
     );
 
     setSelectedComic({
       ...comic,
-      characters: filteredCharacters, // Solo personajes con imágenes
+      characters: filteredCharacters,
     });
 
     setIsModalOpen(true);
@@ -82,9 +89,9 @@ function App() {
         <ComicDetailModal
           comic={selectedComic}
           onClose={closeModal}
-          addFavorite={addFavorite}
-          removeFavorite={removeFavorite}
-          isFavorite={isFavorite(selectedComic?.id)}
+          addToFavoritesFunc={addToFavorites}
+          removeFromFavoritesFunc={removeFromFavorites}
+          isFavoriteFlag={isFavorite(selectedComic?.id)}
         />
       )}
     </div>
