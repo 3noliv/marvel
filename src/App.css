@@ -1,0 +1,92 @@
+/* src/App.css */
+body {
+  background-color: #1c1c1e; /* Fondo oscuro */
+  color: #e1e1e1; /* Texto claro */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow:auto;
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Oculta la barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari) */
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+.text-gradient {
+  font-size: 4rem;
+  color: transparent;
+  background-image: linear-gradient(
+    to left,
+    #e62429,
+    #ff9900,
+    #8f24e6,
+    #00ff11,
+    #8f24e6,
+    #ff9900,
+    #e62429
+  );
+  background-clip: text;
+  animation: color 20s linear infinite; /* Cambiado a 6s para una animación más lenta */
+  background-size: 500%;
+}
+
+@keyframes color {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+/* Fuente Marvel */
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+
+/* Aplicando la animación al título */
+h1,
+h2 {
+  font-family: "Bangers", sans-serif; /* Fuente de Marvel */
+  font-size: 3rem; /* Ajusta el tamaño del título */
+  text-align: center; /* Centrado del título */
+  animation: color-change 5s infinite; /* Duración de 5 segundos, repetido infinitamente */
+}
+
+h3,
+h4 {
+  color: #f0131e; /* Color principal rojizo para títulos */
+}
+
+.title {
+  text-align: center; /* Centra el texto */
+  color: #e62429; /* Rojo para que sea consistente con el tema de Marvel */
+  font-size: 5rem; /* Ajusta el tamaño de la fuente */
+  margin-top: 20px; /* Margen superior para separarlo un poco del borde */
+  margin-bottom: 20px; /* Margen inferior */
+}
+
+button {
+  background-color: #f0131e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #c0101b; /* Más oscuro al pasar el ratón */
+}
+
+/* Para ajustar enlaces, si tienes alguno */
+a {
+  color: #f0131e;
+}
+
+a:hover {
+  color: #c0101b;
+}

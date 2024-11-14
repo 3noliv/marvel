@@ -1,0 +1,63 @@
+/* Asegúrate de que la lista de cómics esté centrada */
+.comic-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  justify-items: center; /* Centra las cartas horizontalmente */
+  gap: 10px; /* Reduce el espacio entre las cartas */
+  padding: 0; /* Elimina el padding en el contenedor */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilo para las cartas de cómics */
+.comic-card {
+  background-color: #1e1e1e; /* Fondo oscuro */
+  border: 3px solid #ff9900; /* Borde de color rojo Marvel */
+  border-radius: 8px; /* Bordes redondeados */ 
+  overflow: hidden; /* Para que el borde no se sobrepase */
+  width: 100%;
+  max-width: 230px; /* Ajustamos el tamaño máximo de las cartas */
+  box-sizing: border-box; /* Asegura que el borde no aumente el tamaño total */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comic-card:hover {
+  transform: scale(1.05); /* Efecto de zoom en hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave al pasar el mouse */
+}
+
+.comic-card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 2px solid #f4b400;
+}
+
+.comic-card h3 {
+  font-family: "Bangers", sans-serif; /* Fuente de Marvel */
+  color: #ffce46; /* Rojo brillante */
+  text-align: center;
+  margin: 10px 0;
+}
+
+.comic-card p {
+  color: #e1e1e1;
+  padding: 0 10px;
+}
+
+/* Título principal de la página */
+h1 {
+  font-family: "Bangers", sans-serif; /* Fuente de Marvel */
+  color: #e62429; /* Rojo brillante */
+  text-align: center;
+  margin-top: 20px;
+  font-size: 3rem; /* Ajusta el tamaño de fuente según lo desees */
+}
+
+/* Títulos secundarios si los necesitas */
+h2 {
+  font-family: "Bangers", sans-serif; /* Fuente de Marvel */
+  color: #e62429; /* Rojo brillante */
+  text-align: center;
+  font-size: 2.5rem;
+}
